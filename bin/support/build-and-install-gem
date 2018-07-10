@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require_relative '../../lib/gtemplate'
+
+v = Gtemplate::VERSION
+
+puts ''
+puts 'Add files to git:'
+puts '================='
+puts ''
+system('git add -A; git status')
+
+puts ''
+puts 'Build and install gem'
+puts '====================='
+puts ''
+system('gem uninstall -aIx gtemplate')
+system('gem build gtemplate.gemspec')
+system('gem install gtemplate-' + v + '.gem')
+
+
+
