@@ -39,8 +39,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 Cambios
 
 1. test_helper y resto de tests.
-1. Rakefile para pasar nuevos test?
-    1. Y para tarea deploy to RubyGems
+1. Rakefile entero
 
 Nombre fichero/carpeta:
 
@@ -51,7 +50,8 @@ Nombre fichero/carpeta:
 Contenido del fichero (nombres de la gema)
 
 1. lib/simple_hot_folder.rb
-1. lib/simple_hot_folder/echo.rb
+1. lib/simple_hot_folder/*
+1. test/*
 
 Contenido del fichero (otros casos)
 

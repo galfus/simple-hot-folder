@@ -1,12 +1,12 @@
 require "rake/testtask"
-require_relative "lib/gtemplate/version"
+require_relative "lib/simple_hot_folder/version"
 
 def name
   "gtemplate"
 end
 
 def version
-  Gtemplate::VERSION
+  SimpleHotFolder::VERSION
 end
 
 def gemspec_file
@@ -63,6 +63,9 @@ end
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.warning = false
+  t.verbose = false
 end
 
 task :default => :test
