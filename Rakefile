@@ -70,7 +70,7 @@ end
 
 task :default => :test
 
-desc "Release #{gem_file}"
+desc "Release #{gem_file} (only repository, not RubyGems)"
 task :release => :build do
   show_text ">> Releasing #{gem_file}"
   if current_branch != 'master'
@@ -93,7 +93,7 @@ task :release => :build do
   show_release
 end
 
-desc "Build #{name} v#{version} into pkg folder"
+desc "Build #{gem_file} into pkg folder"
 task :build do
   show_text ">> Creating #{gem_file}"
   mkdir_p "pkg"
@@ -102,10 +102,10 @@ task :build do
   puts ""
 end
 
-desc "Deploy #{name} v#{version} to RubyGems"
-task :deploy do
-  show_text ">> Deploying  #{gem_file}"
-  sh "gem push pkg/#{gemspec_file}"
+desc "Publish #{gem_file} in RubyGems"
+task :publish do
+  show_text ">> Publishing  #{gem_file}"
+  sh "gem push pkg/#{gem_file}"
   puts ""
 end
 

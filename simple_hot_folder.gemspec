@@ -10,10 +10,10 @@ Gem::Specification.new do |s|
   s.authors = ["Manu"]
   s.email = ["galfus@gmail.com"]
   s.date = Time.now.strftime('%Y-%m-%d')
-  s.summary = %q{Write a short summary, because Rubygems requires one.}
-  s.description = %q{Write a longer description or delete this line.}
-  s.license = "Nonstandard"
-  s.homepage = "http://www.galfus.com"
+  s.summary = %q{A simple hot folder.}
+  s.description = %q{This library is at an early stage of development. Please do not use it already.}
+  s.license = ['MIT']
+  s.homepage = "https://gitlab.com/galfuslab/simple-hot-folder"
 
   # s.required_ruby_version = '>= 2.1.0'
 
