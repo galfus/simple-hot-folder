@@ -2,7 +2,7 @@
 
 ### NOTE
 
-This gem is at an early stage of development. Please do not use it already.}
+This gem is at an early stage of development. Please do not use it already.
 
 
 ## Install
