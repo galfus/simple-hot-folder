@@ -40,6 +40,7 @@ Cambios
 
 1. test_helper y resto de tests.
 1. Rakefile entero
+1. CHANGELOG y README
 
 Nombre fichero/carpeta:
 

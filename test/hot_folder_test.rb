@@ -9,7 +9,7 @@ module SimpleHotFolder
         Test::FILE1,
         Test::FILE2,
       ]
-      @hf = HotFolder.for_files(
+      @hf = HotFolder.new(
         Test::FOLDERS[:input],
         Test::FOLDERS[:error],
         Test::FOLDERS[:output],

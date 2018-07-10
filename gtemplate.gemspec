@@ -5,7 +5,7 @@ require 'gtemplate/version'
 
 Gem::Specification.new do |s|
 
-  s.name = "gtemplate"
+  s.name = "Simple Hot Folder"
   s.version = Gtemplate::VERSION
   s.authors = ["Manu"]
   s.email = ["galfus@gmail.com"]
