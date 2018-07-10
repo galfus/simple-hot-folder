@@ -53,6 +53,7 @@ Contenido del fichero (nombres de la gema)
 1. lib/simple_hot_folder.rb
 1. lib/simple_hot_folder/*
 1. test/*
+1. simple_hot_folder.gemspec
 
 Contenido del fichero (otros casos)
 
