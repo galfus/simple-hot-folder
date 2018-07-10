@@ -2,7 +2,7 @@ require "rake/testtask"
 require_relative "lib/simple_hot_folder/version"
 
 def name
-  'simple_hot_folder'
+  SimpleHotFolder::NAME
 end
 
 def version

@@ -5,7 +5,7 @@ require 'simple_hot_folder/version'
 
 Gem::Specification.new do |s|
 
-  s.name = "Simple Hot Folder"
+  s.name = SimpleHotFolder::NAME
   s.version = SimpleHotFolder::VERSION
   s.authors = ["Manu"]
   s.email = ["galfus@gmail.com"]
