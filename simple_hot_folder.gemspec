@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.date = Time.now.strftime('%Y-%m-%d')
   s.summary = %q{A simple hot folder.}
   s.description = %q{This library is at an early stage of development. Please do not use it already.}
-  s.license = ['MIT']
+  s.licenses = ['MIT']
   s.homepage = "https://gitlab.com/galfuslab/simple-hot-folder"
 
   # s.required_ruby_version = '>= 2.1.0'
