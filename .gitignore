@@ -1,3 +1,16 @@
+# Test hot folders
+/test-data/hot-folder/input/*
+!/test-data/hot-folder/input/.keep
+
+/test-data/hot-folder/output/*
+!/test-data/hot-folder/output/.keep
+
+/test-data/hot-folder/error/*
+!/test-data/hot-folder/error/.keep
+
+# Specific environment configuration
+/config/environments/*
+!/config/environments/.keep
 
 # Custom
 *.gem
