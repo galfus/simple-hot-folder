@@ -6,6 +6,12 @@ module SimpleHotFolder
       '..',
     ]
 
+    # Create hot folder that listens for files.
+    #
+    # @param [String] input_path Input folder path
+    # @param [String] error_path Error folder path
+    # @param [String] output_path Error folder path
+    # @return [HotFolder]
     def initialize(input_path, error_path, output_path)
       @input_path = input_path
       @error_path = error_path
