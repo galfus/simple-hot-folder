@@ -94,9 +94,9 @@ task :release => :build do
   show_release
 end
 
-desc "Push #{gem_file} to the remote respositories"
+desc "Push code to the remote respositories"
 task :push do
-  show_text ">> Pushing #{gem_file} to GitLab y GitHub"
+  show_text ">> Pushing code to GitLab y GitHub"
   sh "git push origin master"
   sh "git push github master"
   puts ""
