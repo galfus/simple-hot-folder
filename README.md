@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/simple_hot_folder.svg)](https://badge.fury.io/rb/simple_hot_folder)
 [![Build Status](https://travis-ci.org/galfus/simple-hot-folder.svg?branch=master)](https://travis-ci.org/galfus/simple-hot-folder)
 
 # Simple Hot Folder
