@@ -90,7 +90,9 @@ task :release => :build do
   puts ""
   sh "git commit --allow-empty -m 'Release #{version}'"
   sh "git tag v#{version}"
+  puts ""
   sh "git push origin master"
+  puts ""
   sh "git push github master"
   show_release
 end
