@@ -19,46 +19,51 @@ module SimpleHotFolder
       @validate_file = default_validate_file_function
     end
 
+    # Yield a {Item} for each file/folder in the input path.
+    # Each file/folder is automatically deleted after the yield
+    # block is executed.
+    #
+    # @yieldparam [Item] item The file/folder.
     def process_input!
       entries = read_input(@input_path)
-      entries.each do |entry|
+      entries.each do |item|
         begin
-          yield entry
-          FileUtils.mv(entry.path, @output_path) if File.exist?(entry.path)
+          yield item
+          FileUtils.rm(item.path) if File.exist?(item.path)
         rescue Exception => e
-          move_file_to_error!(entry, e)
+          move_file_to_error!(item, e)
         end
       end
     end
 
     private
 
-    def move_file_to_error!(entry, exception)
-      FileUtils.mv(entry.path, @error_path) if File.exist?(entry.path)
-      write_error_file(entry, exception.message)
+    def move_file_to_error!(item, exception)
+      FileUtils.mv(item.path, @error_path) if File.exist?(item.path)
+      write_error_file(item, exception.message)
     end
 
-    def write_error_file(entry, text)
-      path = "#{@error_path}/#{entry.name}.txt"
+    def write_error_file(item, text)
+      path = "#{@error_path}/#{item.name}.txt"
       File.open(path, 'w') { |file| file.write(text) }
     end
 
     def read_input(path)
       Dir.entries(path)
-        .map { |name| Entry.new(name, "#{path}/#{name}") }
-        .keep_if { |entry| processable?(entry) }
-        # .each { |entry| p entry.path }
-        # .keep_if { |entry| @validate_file.(entry) }
+        .map { |name| Item.new(name, "#{path}/#{name}") }
+        .keep_if { |item| processable?(item) }
+        # .each { |item| p item.path }
+        # .keep_if { |item| @validate_file.(item) }
     end
 
-    def validate_entry(entry)
-      entry
+    def validate_item(item)
+      item
     end
 
-    def processable?(entry)
-      return false if !File.file?(entry.path)
-      return false if IGNORE_FOLDERS.include?(entry.name)
-      return false if entry.name.start_with?('.')
+    def processable?(item)
+      return false if !File.file?(item.path)
+      return false if IGNORE_FOLDERS.include?(item.name)
+      return false if item.name.start_with?('.')
       true
     end
 
@@ -70,7 +75,11 @@ module SimpleHotFolder
    
   end
 
-  class HotFolder::Entry
+  # Each file or folder from the input folder.
+  #
+  # @param [String] name Name of the file/folder.
+  # @param [String] path Path of the file/folder.
+  class HotFolder::Item
     attr_reader :name
     attr_reader :path
     def initialize(name, path)

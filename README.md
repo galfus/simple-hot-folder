@@ -26,16 +26,16 @@ hot_folder = SimpleHotFolder.for_files(
 )
 
 # Successful
-hot_folder.process_input! do |entry|
-  puts "Processing file #{entry.name}..."
-  puts "File path: #{entry.path}"
-  puts "Now, the file is automatically moved to the output folder"
+hot_folder.process_input! do |item|
+  puts "Processing file #{item.name}..."
+  puts "File path: #{item.path}"
+  puts "Now, the file is automatically deleted"
 end
 
 # On error
-hot_folder.process_input! do |entry|
-  puts "Processing file #{entry.name}..."
-  puts "File path: #{entry.path}"
+hot_folder.process_input! do |item|
+  puts "Processing file #{item.name}..."
+  puts "File path: #{item.path}"
   puts "The file will be automatically moved to the error folder"
   puts "A text file will be created with the error message ('Trigger error')"
   puts "The process will continue with the next file"
