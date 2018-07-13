@@ -87,6 +87,7 @@ task :release => :build do
   if ask_for_confirmation != 'Y'
     show_error_and_exit! "Aborting release"
   end
+  puts ""
   sh "git commit --allow-empty -m 'Release #{version}'"
   sh "git tag v#{version}"
   sh "git push origin master"
@@ -97,7 +98,9 @@ end
 desc "Push code to the remote respositories"
 task :push do
   show_text ">> Pushing code to GitLab y GitHub"
+  puts ""
   sh "git push origin master"
+  puts ""
   sh "git push github master"
   puts ""
 end
@@ -114,6 +117,7 @@ end
 desc "Publish #{gem_file} in RubyGems"
 task :publish do
   show_text ">> Publishing  #{gem_file}"
+  puts ""
   sh "gem push pkg/#{gem_file}"
   puts ""
 end
