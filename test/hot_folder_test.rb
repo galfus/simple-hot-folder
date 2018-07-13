@@ -22,7 +22,7 @@ module SimpleHotFolder
         files << item.name
       end
       content = Test.content_of_folders
-      assert_equal @files, files
+      assert_equal @files, files.sort
       assert !content[:input].include?(Test::FILE1)
       assert !content[:input].include?(Test::FILE2)
       assert !content[:error].include?(Test::FILE1)
