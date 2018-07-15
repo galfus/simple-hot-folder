@@ -15,7 +15,7 @@ module SimpleHotFolder
       )
     end
 
-    def test_listen_hot_folder_and_stop_after_the_first_item_is_processed
+    def test_listen_and_stop_after_the_first_item_is_processed
       i = 0
       @hf.listen_input! do |item|
         puts "Iteration #{i}"
