@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.1.5] - 2018-07-15
+
+* Remove `output_path`.
+* Listen input folder.
+
 ## [0.1.4] - 2018-07-13
 
 * Delete current item from input folder after it has been processed. 

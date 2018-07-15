@@ -15,6 +15,7 @@ module SimpleHotFolder
       @input_path = input_path
       @error_path = error_path
       @validate_file = default_validate_file_function
+      @stop = false
     end
 
     # Yield a {Item} for each file/folder in the input path.
@@ -26,6 +27,7 @@ module SimpleHotFolder
       entries = read_input(@input_path)
       entries.each do |item|
         begin
+          return if @stop
           yield item
           FileUtils.rm(item.path) if File.exist?(item.path)
         rescue Exception => e
@@ -40,15 +42,16 @@ module SimpleHotFolder
     #
     # @yieldparam [Item] item The file/folder.
     def listen_input!
-      entries = read_input(@input_path)
-      entries.each do |item|
-        begin
-          yield item
-          FileUtils.rm(item.path) if File.exist?(item.path)
-        rescue Exception => e
-          move_file_to_error!(item, e)
-        end
+      while true
+        puts 'Listening...'
+        process_input! { |item| yield item }
+        return if @stop
+        sleep(1)
       end
+    end
+
+    def stop_listening_after_this_item
+      @stop = true
     end
 
     private

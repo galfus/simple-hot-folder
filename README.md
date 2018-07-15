@@ -19,27 +19,38 @@ gem install simple_hot_folder
 ```ruby
 require 'simple_hot_folder'
 
+# Create a hot folder that listens for files.
 hot_folder = SimpleHotFolder.for_files(
   '/path/to/input_folder',
-  '/path/to/error_folder',
-  '/path/to/output_folder'
+  '/path/to/error_folder'
 )
 
-# Successful
-hot_folder.process_input! do |item|
+# Listen input folder for incomming files.
+hot_folder.listen_input! do |item|
   puts "Processing file #{item.name}..."
   puts "File path: #{item.path}"
   puts "Now, the file is automatically deleted"
 end
 
+# Stop listening. 
+hot_folder.listen_input! do |item|
+  puts "Processing file #{item.name}..."
+  hot_folder.stop_listening_after_this_item 
+end
+
 # On error
-hot_folder.process_input! do |item|
+hot_folder.listen_input! do |item|
   puts "Processing file #{item.name}..."
   puts "File path: #{item.path}"
   puts "The file will be automatically moved to the error folder"
   puts "A text file will be created with the error message ('Trigger error')"
   puts "The process will continue with the next file"
   raise 'Trigger error'
+end
+
+# Process input folder just once.
+hot_folder.process_input! do |item|
+  puts "Processing file #{item.name}..."
 end
 ```
 
