@@ -43,7 +43,6 @@ module SimpleHotFolder
     # @yieldparam [Item] item The file/folder.
     def listen_input!
       while true
-        puts 'Listening...'
         process_input! { |item| yield item }
         return if @stop
         sleep(1)
