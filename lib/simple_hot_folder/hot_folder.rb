@@ -10,12 +10,10 @@ module SimpleHotFolder
     #
     # @param [String] input_path Input folder path
     # @param [String] error_path Error folder path
-    # @param [String] output_path Error folder path
     # @return [HotFolder]
-    def initialize(input_path, error_path, output_path)
+    def initialize(input_path, error_path)
       @input_path = input_path
       @error_path = error_path
-      @output_path = output_path
       @validate_file = default_validate_file_function
     end
 
@@ -25,6 +23,23 @@ module SimpleHotFolder
     #
     # @yieldparam [Item] item The file/folder.
     def process_input!
+      entries = read_input(@input_path)
+      entries.each do |item|
+        begin
+          yield item
+          FileUtils.rm(item.path) if File.exist?(item.path)
+        rescue Exception => e
+          move_file_to_error!(item, e)
+        end
+      end
+    end
+
+    # Yield a {Item} for each file/folder in the input path.
+    # Each file/folder is automatically deleted after the yield
+    # block is executed.
+    #
+    # @yieldparam [Item] item The file/folder.
+    def listen_input!
       entries = read_input(@input_path)
       entries.each do |item|
         begin

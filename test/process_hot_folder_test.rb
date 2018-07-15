@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module SimpleHotFolder
-  class TestHotFolder < Minitest::Test
+  class TestProcessHotFolder < Minitest::Test
 
     def setup
       Test::initialize_test_folders!
@@ -11,8 +11,7 @@ module SimpleHotFolder
       ]
       @hf = HotFolder.new(
         Test::FOLDERS[:input],
-        Test::FOLDERS[:error],
-        Test::FOLDERS[:output],
+        Test::FOLDERS[:error]
       )
     end
 
@@ -53,12 +52,6 @@ module SimpleHotFolder
       assert content[:error].include?(Test::FILE1 + '.txt')
     end
 
-    # def test_validate_files
-    #   validateFile = ->(file) { 
-    #     true
-    #   }
-    #   hf.validateInputWith(validateFile)
-    # end
-
   end
 end
+
